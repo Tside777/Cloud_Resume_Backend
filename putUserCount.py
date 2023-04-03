@@ -17,12 +17,14 @@ def lambda_handler(event, context):
        },
        ExpressionAttributeValues={ 
         ':q': 1 
-       }
+       },
+       ReturnValues='UPDATED_NEW'
    )
+
 
    return {
 
        'statusCode': response['ResponseMetadata']['HTTPStatusCode'],
-       'body': 'userCount incremented'
+       'body': response['Attributes']
 
    }
