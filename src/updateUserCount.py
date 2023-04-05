@@ -14,7 +14,7 @@ def lambda_handler(event, context):
    }
 
 def update_count(dynamodb):
-    table = dynamodb.Table('Cloud_Resume_User_Count')
+    table = dynamodb.Table('CloudResume')
 
     response = table.update_item(
         Key={

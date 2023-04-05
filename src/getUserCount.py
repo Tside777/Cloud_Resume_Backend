@@ -3,7 +3,7 @@ import boto3
 def lambda_handler(event, context):
 
     client = boto3.resource('dynamodb')
-    table = client.Table('Cloud_Resume_User_Count')
+    table = client.Table('CloudResume')
     response = table.get_item(
         Key={
             'id': 1

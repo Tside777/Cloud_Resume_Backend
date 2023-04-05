@@ -8,7 +8,7 @@ def create_user_count_table(dynamodb=None):
         dynamodb = boto3.resource('dynamodb', endpoint_url='http://localhost:8000')
 
     table = dynamodb.create_table(
-        TableName='Cloud_Resume_User_Count',
+        TableName='CloudResume',
         KeySchema=[
             {
                 'AttributeName': 'id',
@@ -27,7 +27,7 @@ def create_user_count_table(dynamodb=None):
         }
     )
 
-    table.meta.client.get_waiter('table_exists').wait(TableName='Cloud_Resume_User_Count')
+    table.meta.client.get_waiter('table_exists').wait(TableName='CloudResume')
     return table
 
 
@@ -47,7 +47,7 @@ class TestDatabaseFunctions(unittest.TestCase):
         """
         Test if our mock table is ready
         """
-        self.assertIn('Cloud_Resume_User_Count', self.table.name)
+        self.assertIn('CloudResume', self.table.name)
     
 
     def test_putUserCount(self):
