@@ -54,7 +54,7 @@ class TestDatabaseFunctions(unittest.TestCase):
         """
         Test if our method to update the count works
         """
-        from putUserCount import update_count
+        from updateUserCount import update_count
         result = update_count(self.dynamodb)
         self.assertEqual(200, result['ResponseMetadata']['HTTPStatusCode'])
         self.assertEqual(1, result['Attributes']['userCount'])
