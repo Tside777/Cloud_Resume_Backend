@@ -32,3 +32,5 @@ override.tf.json
 # Ignore CLI configuration files
 .terraformrc
 terraform.rc
+src/__pycache__/updateUserCount.cpython-310.pyc
+.terraform.lock.hcl
