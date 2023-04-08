@@ -1,17 +1,24 @@
 import boto3
+import json
 
 def lambda_handler(event, context):
 
    client = boto3.resource('dynamodb')
    
    response = update_count(client)
+   
+   response['Attributes']['userCount'] = int(response['Attributes']['userCount'])
 
    return {
+        "isBase64Encoded": False,
+        "statusCode": response['ResponseMetadata']['HTTPStatusCode'],
+        "headers": response['ResponseMetadata']['HTTPHeaders'],
+        "body": json.dumps(response['Attributes'])
+    }
 
-       'statusCode': response['ResponseMetadata']['HTTPStatusCode'],
-       'body': response['Attributes']
+#       'statusCode': response['ResponseMetadata']['HTTPStatusCode'],
+#       'body': response['Attributes']
 
-   }
 
 def update_count(dynamodb):
     table = dynamodb.Table('CloudResume')
