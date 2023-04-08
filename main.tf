@@ -25,3 +25,11 @@ module "api_gateway" {
   lambda_invoke_arn = module.lambda.lambda_invoke_arn
   lambda_name = module.lambda.lambda_name
 }
+
+module "cors" {
+  source = "squidfunk/api-gateway-enable-cors/aws"
+  version = "0.3.3"
+
+  api_id          = module.api_gateway.api_id
+  api_resource_id = module.api_gateway.api_resource_id
+}
