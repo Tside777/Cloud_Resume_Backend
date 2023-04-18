@@ -8,6 +8,9 @@ def lambda_handler(event, context):
    response = update_count(client)
    
    response['Attributes']['userCount'] = int(response['Attributes']['userCount'])
+   response['ResponseMetadata']['HTTPHeaders']['Access-Control-Allow-Origin'] = '*'
+   response['ResponseMetadata']['HTTPHeaders']['Access-Control-Allow-Headers'] = 'Content-Type'
+   response['ResponseMetadata']['HTTPHeaders']['Access-Control-Allow-Methods'] = 'OPTIONS,GET'
 
    return {
         "isBase64Encoded": False,
@@ -15,9 +18,6 @@ def lambda_handler(event, context):
         "headers": response['ResponseMetadata']['HTTPHeaders'],
         "body": json.dumps(response['Attributes'])
     }
-
-#       'statusCode': response['ResponseMetadata']['HTTPStatusCode'],
-#       'body': response['Attributes']
 
 
 def update_count(dynamodb):
