@@ -32,4 +32,5 @@ module "cors" {
 
   api_id          = module.api_gateway.api_id
   api_resource_id = module.api_gateway.api_resource_id
+  allow_origin    = "https://www.trevorscloudresume.com"
 }
