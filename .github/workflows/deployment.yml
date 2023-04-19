@@ -2,7 +2,7 @@ name: Deployment
 run-name: ${{ github.actor }} is deploying the cloud resume backend
 on: [push]
 jobs:
-  check-bats-version:
+  test-python-code:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -11,5 +11,6 @@ jobs:
           cd $GITHUB_WORKSPACE
           python -m pip install --upgrade pip
           pip install -r requirements.txt
+          echo
       - name: Run Tests
-        run: python -m unittest src/testUpdateUserCount.py
+        run: python -m unittest src/testUpdateUserCount.py -vv

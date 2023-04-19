@@ -1,6 +1,7 @@
 from moto import mock_dynamodb
 import boto3
 import unittest
+import sys
 
 
 def create_user_count_table(dynamodb=None):
@@ -41,6 +42,7 @@ class TestDatabaseFunctions(unittest.TestCase):
         """
         self.dynamodb = boto3.resource('dynamodb', region_name='us-east-1')
         self.table = create_user_count_table(self.dynamodb)
+        sys.path
 
 
     def test_table_exists(self):
