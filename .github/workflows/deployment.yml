@@ -1,6 +1,9 @@
 name: Deployment
 run-name: ${{ github.actor }} is deploying the cloud resume backend
 on: [push]
+permissions:
+  id-token: write
+  contents: read
 jobs:
   test-python-code:
     runs-on: ubuntu-latest
