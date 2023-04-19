@@ -5,10 +5,19 @@ terraform {
         version = "~> 4.0"
       }
     }
+    backend "s3" {
+      bucket = "trevors-cloud-resume-backend-bucket"
+      key = "terraform-state"
+      region = "us-east-1"
+    }
 }
 
 provider "aws" {
     region = "us-east-1"
+}
+
+module "s3" {
+  source = "./modules/aws-s3-backend/"
 }
 
 module "dynamodb" {
