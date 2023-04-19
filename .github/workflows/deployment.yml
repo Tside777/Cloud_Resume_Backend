@@ -23,6 +23,8 @@ jobs:
     needs: test-python-code
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v3
+      - run: cd $GITHUB_WORKSPACE
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v2
         with:
