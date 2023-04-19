@@ -51,11 +51,12 @@ resource "aws_api_gateway_deployment" "CloudResumeDeployment" {
   rest_api_id = aws_api_gateway_rest_api.CloudResumeAPI.id
 
   triggers = {
-    redeployment = sha1(jsonencode([
+    redeployment = sha1(join("", [jsonencode([
       aws_api_gateway_resource.CloudResumeResource,
       aws_api_gateway_method.CloudResumeMethod,
       aws_api_gateway_integration.CloudResumeIntegration,
-    ]))
+    ]),
+    filesha1("main.tf")]))
   }
 
   lifecycle {
