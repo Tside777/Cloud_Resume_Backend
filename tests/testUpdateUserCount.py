@@ -1,7 +1,6 @@
 from moto import mock_dynamodb
 import boto3
 import unittest
-import sys
 
 
 def create_user_count_table(dynamodb=None):
@@ -42,7 +41,6 @@ class TestDatabaseFunctions(unittest.TestCase):
         """
         self.dynamodb = boto3.resource('dynamodb', region_name='us-east-1')
         self.table = create_user_count_table(self.dynamodb)
-        sys.path
 
 
     def test_table_exists(self):
@@ -56,7 +54,7 @@ class TestDatabaseFunctions(unittest.TestCase):
         """
         Test if our method to update the count works
         """
-        from updateUserCount import update_count
+        from src.updateUserCount import update_count
         result = update_count(self.dynamodb)
         self.assertEqual(200, result['ResponseMetadata']['HTTPStatusCode'])
         self.assertEqual(1, result['Attributes']['userCount'])

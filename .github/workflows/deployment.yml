@@ -13,4 +13,4 @@ jobs:
           pip install -r requirements.txt
           echo
       - name: Run Tests
-        run: python -m unittest src/testUpdateUserCount.py -vv
+        run: python -m unittest tests.testUpdateUserCount -vv
